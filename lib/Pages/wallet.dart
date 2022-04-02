@@ -91,7 +91,7 @@ class _HomeTradeState extends State<HomeTrade> {
                           borderRadius: BorderRadius.circular(50),
                           color: Color(0xffe6fbff),
                         ),
-
+                        //con
                         // Container holding $
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(25, 70, 330, 70),
