@@ -1,7 +1,13 @@
+import 'package:arbitex/arb_trades.dart';
 import 'package:flutter/material.dart';
 
 import 'Pages/arb_login.dart';
 import 'Pages/arb_onboarding.dart';
+import 'Pages/arb_trade.dart';
+import 'Pages/arb_home_trade.dart';
+import 'arb_settings.dart';
+import 'arb_traders.dart';
+import 'buttom_navigationBar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ArbOnboarding(),
+      home: Navigationbar(),
     );
   }
 }

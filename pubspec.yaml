@@ -30,6 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   adobe_xd: ^2.0.1
+  curved_navigation_bar: ^1.0.3
 
 
   # The following adds the Cupertino Icons font to your application.
