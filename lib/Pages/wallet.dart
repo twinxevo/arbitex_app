@@ -3,334 +3,544 @@ import 'package:arbitex/Pages/arb_onboarding.dart';
 import 'package:arbitex/arb_settings.dart';
 import 'package:flutter/material.dart';
 
-
-class HomeTrade extends StatefulWidget {
-  const HomeTrade({Key? key}) : super(key: key);
+class WalletPage extends StatefulWidget {
+  const WalletPage({Key? key}) : super(key: key);
 
   @override
-  _HomeTradeState createState() => _HomeTradeState();
+  _WalletPageState createState() => _WalletPageState();
 }
 
-class _HomeTradeState extends State<HomeTrade> {
-  double _currentSliderValue = 0;
-  double _usdBalance = 5350.67;
-  //     int currentPage = 0;
-  // final screens = [
-  //   HomeTrade(),
-  //   Login(),
-  //   ArbOnboarding(),
-  //   ArbSettings(),
-  // ];
+class _WalletPageState extends State<WalletPage> {
+  final currency_dd = ['EUR', 'GBP', 'NGN', 'USD'];
+  String? value;
+  var currencies;
+
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    DropdownMenuItem<String> buildMenuItem(String currencies) => DropdownMenuItem(value: currencies,
+      child: Text(
+        currencies,
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blue[100]),
+      ),);
     return Scaffold(
-      body: Container(
-        margin: EdgeInsets.only(top: 8),
-        child: ListView(
-          physics: ClampingScrollPhysics(),
-          children: <Widget>[
-            //App bar
-            Container(
-              margin: EdgeInsets.only(left: 16, right: 16, top: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  GestureDetector(
-                      onTap: () {
-                      },
-                      child: Icon(
-                        Icons.menu_rounded,
-                        color: Colors.lightBlueAccent,
-                      )),
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.blue,
-                    ),
-                  ),
-                ],
-              ),
+      body: Stack(
+        children: [
+          Container(
+            height: size.height * 1,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(30),
+                  bottomLeft: Radius.circular(30)),
+              color: Colors.blue[900],
             ),
-
-            //Card part
-
-            SizedBox(height: 25),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, bottom: 20),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'H e l l o   😉',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    '[ NAME ]',
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            Column(
-              children: [
-                Stack(
-                  children: <Widget>[
-                    Padding(
-                      padding:
-                      const EdgeInsets.only(left: 16, right: 16, top: 20),
-                      child: Container(
-                        height: 250,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Color(0xffe6fbff),
-                        ),
-                        //con
-                        // Container holding $
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        height: 65,
                         child: Padding(
-                          padding: const EdgeInsets.fromLTRB(25, 70, 330, 70),
+                          padding: const EdgeInsets.all(8.0),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                height: 100,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30),
-                                  color: Colors.blue,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    '\$',
-                                    style: TextStyle(
-                                        fontSize: 70.0,
-                                        fontWeight: FontWeight.w900,
-                                        color: Colors.white),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 16),
+                                    child: Text(
+                                      'W a l l e t   💼',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w600),
+                                    ),
                                   ),
-                                ),
+
+                                  // Padding(
+                                  //   padding: const EdgeInsets.only(left: 16),
+                                  //   child: Text('[NAME]',
+                                  //     style: TextStyle(
+                                  //         color: Colors.white,
+                                  //         fontSize: 15,
+                                  //         fontWeight: FontWeight.w600
+                                  //     ),),
+                                  // ),
+                                ],
                               ),
-                              SizedBox(width: 50),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        '$_usdBalance',
-                                        style: TextStyle(
-                                            fontSize: 40.0,
-                                            fontWeight: FontWeight.w900,
-                                            color: Colors.black),
-                                      ),
-                                      SizedBox(height: 10),
-                                      Text(
-                                        '0.0000214816 BTC',
-                                        style: TextStyle(
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.w300,
-                                            color: Colors.black),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+
+                              SizedBox(height: 2.5),
+
+                              DropdownButtonHideUnderline(
+                                child: DropdownButton<String>(
+                                  value: currencies,
+                                  icon: Icon(Icons.arrow_drop_down, color: Colors.white),
+                                  items: currency_dd.map(buildMenuItem).toList(),
+                                  onChanged: (value){
+                                  //=>
+                                      setState(() {
+                                        currencies = value;
+                                        //=> this.value = value
+                                      });
+                                      print('$currencies');
+                                }),
                               ),
                             ],
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-
-            SizedBox(height: 20),
-
-            Column(
-              children: [
-                Text(
-                  'Investment Amount',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-                ),
-                Slider(
-                    value: _currentSliderValue,
-                    min: 0,
-                    max: 100,
-                    divisions: 4,
-                    label: '$_currentSliderValue%',
-                    inactiveColor: Colors.grey,
-                    thumbColor: Colors.lightBlueAccent[100],
-                    onChanged: (value) {
-                      setState(() {
-                        _currentSliderValue = value;
-                      });
-                    }),
-              ],
-            ),
-
-            SizedBox(height: 30),
-
-            Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16),
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    height: 500,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Color(0xffe6fbff),
-                    ),
+                      Container(
+                        child: Column(
+                          children: [
+                            Text(
+                              'T o t a l  B a l a n c e',
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.white),
+                            ),
+                            SizedBox(height: 3),
+                            Text(
+                              '$currencies 5400',
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 60),
+                  Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 50, top: 30),
-                      // child: Column(
-                      //   children: <Widget>[
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       child: ListView(
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              //Container(
-                              //child:
-                              Padding(
-                                padding: const EdgeInsets.only(left: 50),
-                                child: Text(
-                                  'Difference: \$ 180.00',
-                                  style: TextStyle(
-                                      fontSize: 20, fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              //),
-                              InkWell(
-                                onTap: (){
-                                  print('successful');
-                                },
-                                child: Center(
-                                  child: Text(
-                                    'Buy - Binance \$44,900\nSell - Houbi \$45,080',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w300,
+                          //child:
+                          Container(
+                            //height: MediaQuery.of(context).size.height,
+                            height: 800,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              color: Colors.grey[100],
+                            ),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 16, right: 16, top: 10),
+                                  child: Container(
+                                    height: 90,
+                                    width: 210,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(12),
+                                          topRight: Radius.circular(12),
+                                          bottomLeft: Radius.circular(12),
+                                          bottomRight: Radius.circular(12)),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 5, top: 7, bottom: 5),
+                                              child: Container(
+                                                height: 70,
+                                                width: 100,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                          topLeft: Radius
+                                                              .circular(8),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  0),
+                                                          bottomLeft:
+                                                              Radius.circular(
+                                                                  12),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  0)),
+                                                ),
+                                                child: Center(
+                                                  child: Column(
+                                                    children: [
+                                                      Icon(
+                                                        Icons.account_balance,
+                                                        color: Colors.blue[900],
+                                                        size: 40,
+                                                      ),
+                                                      Text(
+                                                        'Deposit',
+                                                        style: TextStyle(
+                                                          fontSize: 20,
+                                                          color:
+                                                              Colors.blue[900],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 7, bottom: 5),
+                                              child: Container(
+                                                height: 70,
+                                                width: 100,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                          topLeft: Radius
+                                                              .circular(0),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  12),
+                                                          bottomLeft:
+                                                              Radius.circular(
+                                                                  0),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  12)),
+                                                ),
+                                                child: Center(
+                                                  child: Column(
+                                                    children: [
+                                                      Icon(
+                                                        Icons.send_outlined,
+                                                        color: Colors.blue[900],
+                                                        size: 40,
+                                                      ),
+                                                      Text(
+                                                        'Withdraw',
+                                                        style: TextStyle(
+                                                          fontSize: 20,
+                                                          color:
+                                                              Colors.blue[900],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
-                              ),
-
-                              SizedBox(height: 20),
-
-                              Padding(
-                                padding: const EdgeInsets.only(left: 50),
-                                child: Text(
-                                  'Difference: \$ 400.00',
+                                SizedBox(height: 80),
+                                Text(
+                                  'Available Balance',
                                   style: TextStyle(
-                                      fontSize: 20, fontWeight: FontWeight.w600),
+                                    fontSize: 20,
+                                    color: Colors.blue[900],
+                                  ),
                                 ),
-                              ),
-                              //),
-                              InkWell(
-                                onTap: () {},
-                                child: Center(
-                                  child: Text(
-                                    'Buy - Hotbit \$44,500\nSell - Binance \$44,900',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w300,
+                                SizedBox(height: 10),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20),
+                                  child: Container(
+                                    height: 75,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(12),
+                                          topRight: Radius.circular(12),
+                                          bottomLeft: Radius.circular(12),
+                                          bottomRight: Radius.circular(12)),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.attach_money_sharp,
+                                                color: Colors.blue[900],
+                                                size: 30,
+                                              ),
+                                              Text(
+                                                '0.00',
+                                                style: TextStyle(
+                                                  fontSize: 30,
+                                                  color: Colors.blue[900],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Text('Currently Unavailable'),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-
-                              SizedBox(height: 20),
-
-                              Padding(
-                                padding: const EdgeInsets.only(left: 50),
-                                child: Text(
-                                  'Difference: \$ 180.00',
+                                SizedBox(height: 40),
+                                Text(
+                                  'Cryptocurrency Balance',
                                   style: TextStyle(
-                                      fontSize: 20, fontWeight: FontWeight.w600),
+                                    fontSize: 20,
+                                    color: Colors.blue[900],
+                                  ),
                                 ),
-                              ),
-                              //),
-                              InkWell(
-                                onTap: () {},
-                                child: Center(
-                                  child: Text(
-                                    'Buy - Binance \$44,900\nSell - Houbi \$45,080',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w300,
+                                SizedBox(height: 10),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20),
+                                  child: Container(
+                                    height: 75,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(12),
+                                          topRight: Radius.circular(12),
+                                          bottomLeft: Radius.circular(12),
+                                          bottomRight: Radius.circular(12)),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              //Icon(Icons.attach_money_sharp, color: Colors.blue[900], size: 40,),
+                                              Text(
+                                                'BTC',
+                                                style: TextStyle(
+                                                  fontSize: 20,
+                                                  color: Colors.blue[900],
+                                                ),
+                                              ),
+                                              SizedBox(width: 5),
+                                              Text(
+                                                '0.00',
+                                                style: TextStyle(
+                                                  fontSize: 30,
+                                                  color: Colors.blue[900],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Text('Currently Unavailable'),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-
-                              SizedBox(height: 20),
-
-                              Padding(
-                                padding: const EdgeInsets.only(left: 50),
-                                child: Text(
-                                  'Difference: \$ 250.00',
-                                  style: TextStyle(
-                                      fontSize: 20, fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              //),
-                              InkWell(
-                                onTap: () {},
-                                child: Center(
-                                  child: Text(
-                                    'Buy - Kucoin \$44,500\nSell - Hitbtc \$44,750',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w300,
+                                SizedBox(height: 10),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20),
+                                  child: Container(
+                                    height: 75,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(12),
+                                          topRight: Radius.circular(12),
+                                          bottomLeft: Radius.circular(12),
+                                          bottomRight: Radius.circular(12)),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              //Icon(Icons.attach_money_sharp, color: Colors.blue[900], size: 40,),
+                                              Text(
+                                                'USDT',
+                                                style: TextStyle(
+                                                  fontSize: 20,
+                                                  color: Colors.blue[900],
+                                                ),
+                                              ),
+                                              SizedBox(width: 5),
+                                              Text(
+                                                '0.00',
+                                                style: TextStyle(
+                                                  fontSize: 30,
+                                                  color: Colors.blue[900],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Text('Currently Unavailable'),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-
-                              SizedBox(height: 20),
-
-                              Padding(
-                                padding: const EdgeInsets.only(left: 50),
-                                child: Text(
-                                  'Difference: \$ 400.00',
-                                  style: TextStyle(
-                                      fontSize: 20, fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              //),
-                              InkWell(
-                                onTap: () {},
-                                child: Center(
-                                  child: Text(
-                                    'Buy - Hotbit \$44,500\nSell - Binance \$44,900',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w300,
+                                SizedBox(height: 10),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20),
+                                  child: Container(
+                                    height: 75,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(12),
+                                          topRight: Radius.circular(12),
+                                          bottomLeft: Radius.circular(12),
+                                          bottomRight: Radius.circular(12)),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              //Icon(Icons.attach_money_sharp, color: Colors.blue[900], size: 40,),
+                                              Text(
+                                                'XRP',
+                                                style: TextStyle(
+                                                  fontSize: 20,
+                                                  color: Colors.blue[900],
+                                                ),
+                                              ),
+                                              SizedBox(width: 5),
+                                              Text(
+                                                '0.00',
+                                                style: TextStyle(
+                                                  fontSize: 30,
+                                                  color: Colors.blue[900],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Text('Currently Unavailable'),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                                SizedBox(height: 10),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20),
+                                  child: Container(
+                                    height: 75,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(12),
+                                          topRight: Radius.circular(12),
+                                          bottomLeft: Radius.circular(12),
+                                          bottomRight: Radius.circular(12)),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              //Icon(Icons.attach_money_sharp, color: Colors.blue[900], size: 40,),
+                                              Text(
+                                                'LTC',
+                                                style: TextStyle(
+                                                  fontSize: 20,
+                                                  color: Colors.blue[900],
+                                                ),
+                                              ),
+                                              SizedBox(width: 5),
+                                              Text(
+                                                '0.00',
+                                                style: TextStyle(
+                                                  fontSize: 30,
+                                                  color: Colors.blue[900],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Text('Currently Unavailable'),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20),
+                                  child: Container(
+                                    height: 75,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(12),
+                                          topRight: Radius.circular(12),
+                                          bottomLeft: Radius.circular(12),
+                                          bottomRight: Radius.circular(12)),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              //Icon(Icons.attach_money_sharp, color: Colors.blue[900], size: 40,),
+                                              Text(
+                                                'XML',
+                                                style: TextStyle(
+                                                  fontSize: 20,
+                                                  color: Colors.blue[900],
+                                                ),
+                                              ),
+                                              SizedBox(width: 5),
+                                              Text(
+                                                '0.00',
+                                                style: TextStyle(
+                                                  fontSize: 30,
+                                                  color: Colors.blue[900],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Text('Currently Unavailable'),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
-
-                      //   ],
-                      // ),
                     ),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
+
+
   }
 }

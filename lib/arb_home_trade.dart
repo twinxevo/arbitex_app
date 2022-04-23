@@ -3,7 +3,7 @@ import 'package:arbitex/Pages/arb_onboarding.dart';
 import 'package:arbitex/arb_settings.dart';
 import 'package:flutter/material.dart';
 
-import 'arb_sign_up.dart';
+import 'Pages/arb_sign_up.dart';
 
 class HomeTrade extends StatefulWidget {
   const HomeTrade({Key? key}) : super(key: key);

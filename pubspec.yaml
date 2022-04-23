@@ -31,6 +31,8 @@ dependencies:
     sdk: flutter
   adobe_xd: ^2.0.1
   curved_navigation_bar: ^1.0.3
+  image_picker: ^0.8.5
+  universal_html: ^2.0.8
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -60,7 +62,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-assets:
+  assets:
+    - assets/png.jpeg
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

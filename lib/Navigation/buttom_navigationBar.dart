@@ -1,10 +1,13 @@
+import 'package:arbitex/Pages/profile.dart';
+import 'package:arbitex/Pages/wallet.dart';
+import 'package:arbitex/Pages/arb_home.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
-import 'Pages/arb_login.dart';
-import 'Pages/arb_onboarding.dart';
-import 'Pages/arb_settings.dart';
-import 'Pages/arb_home_trade.dart';
+import '../Pages/arb_login.dart';
+import '../Pages/arb_onboarding.dart';
+import '../Pages/arb_settings.dart';
+import '../arb_home_trade.dart';
 
 class Navigationbar extends StatefulWidget {
   const Navigationbar({Key? key}) : super(key: key);
@@ -16,10 +19,9 @@ class Navigationbar extends StatefulWidget {
 class _NavigationbarState extends State<Navigationbar> {
   int currentPage = 1;
   final screens = [
-    ArbOnboarding(),
-    HomeTrade(),
-    Login(),
-    ArbSettings(),
+    Profile(),
+    Home(),
+    WalletPage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class _NavigationbarState extends State<Navigationbar> {
 
         bottomNavigationBar: CurvedNavigationBar(
           index: currentPage,
-          buttonBackgroundColor: Colors.lightBlueAccent,
+          buttonBackgroundColor: Colors.blue[500],
           backgroundColor: Colors.transparent,
           height: 60,
           animationCurve: Curves.easeInOut,
