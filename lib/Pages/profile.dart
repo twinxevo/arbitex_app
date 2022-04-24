@@ -335,16 +335,10 @@ class _ProfileState extends State<Profile> {
                    ),
 
                    SizedBox(height: 30),
-                   Container(
-                     height: 40,
-                     width: 90,
-                     color: Colors.white,
-                     child: Center(
-                         child: Text(
-                       'LOG OUT',
-                       style: TextStyle(
-                           color: Colors.blue[900], fontWeight: FontWeight.bold, fontSize: 15),
-                     )),
+                   ElevatedButton.icon(
+                     onPressed: () {},
+                     label: const Text('Log Out'),
+                     icon: const Icon(Icons.logout),
                    ),
                  ],
                ),

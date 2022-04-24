@@ -1,3 +1,5 @@
+import 'package:arbitex/Pages/login.dart';
+import 'package:arbitex/Pages/signup.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -144,153 +146,165 @@ class _HomeState extends State<Home> {
                                         children: [
                                           Padding(
                                             padding: const EdgeInsets.only(left: 16, right: 16, top: 5),
-                                            child: Container(
-                                              height: 100,
-                                              width: MediaQuery.of(context).size.width,
-                                              decoration: BoxDecoration(
-                                                color: Colors.blue[900],
-                                                borderRadius: BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12), bottomLeft: Radius.circular(12), bottomRight: Radius.circular(12)),
-                                              ),
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(25),
-                                                child: Column(
-                                                  children: [
-                                                    Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                      children: [
-                                                        Text('% 5',
-                                                        style: TextStyle(
-                                                          fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white
-                                                        ),),
-
-                                                        //SizedBox(width: 5),
-                                                        // Text('5',
-                                                        //     style: TextStyle(
-                                                        //     fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white
-                                                        // ),),
-
-                                                        SizedBox(width: 5),
-                                                        Text('Buy - Binance',
-                                                          style: TextStyle(
-                                                              fontSize: 17, fontWeight: FontWeight.bold, color: Colors.lightGreenAccent
-                                                          ),),
-
-                                                        SizedBox(width: 5),
-                                                        Text('Sell - Houbi',
-                                                          style: TextStyle(
-                                                              fontSize: 17, fontWeight: FontWeight.bold, color: Colors.redAccent
-                                                          ),),
-                                                      ],
-                                                    ),
-
-                                                    Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                      children: [
-                                                        Text('BTC',
-                                                          style: TextStyle(
-                                                              fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white
-                                                          ),),
-
-                                                        //SizedBox(width: 53),
-                                                        Text('\$ 44900',
-                                                          style: TextStyle(
-                                                              fontSize: 17, fontWeight: FontWeight.bold, color: Colors.lightGreenAccent
-                                                          ),),
-
-                                                        //SizedBox(width: 65),
-                                                        Text('\$ 45080',
-                                                          style: TextStyle(
-                                                              fontSize: 17, fontWeight: FontWeight.bold, color: Colors.redAccent
-                                                          ),),
-                                                      ],
-                                                    ),
-                                                  ],
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                Navigator.push(
+                                                    context, MaterialPageRoute(builder: (_)=> Signup()));
+                                              },
+                                              child: Container(
+                                                height: 100,
+                                                width: MediaQuery.of(context).size.width,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.blue[900],
+                                                  borderRadius: BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12), bottomLeft: Radius.circular(12), bottomRight: Radius.circular(12)),
                                                 ),
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(25),
+                                                  child: Column(
+                                                    children: [
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+                                                          Text('% 5',
+                                                          style: TextStyle(
+                                                            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white
+                                                          ),),
+
+                                                          //SizedBox(width: 5),
+                                                          // Text('5',
+                                                          //     style: TextStyle(
+                                                          //     fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white
+                                                          // ),),
+
+                                                          SizedBox(width: 5),
+                                                          Text('Buy - Binance',
+                                                            style: TextStyle(
+                                                                fontSize: 17, fontWeight: FontWeight.bold, color: Colors.lightGreenAccent
+                                                            ),),
+
+                                                          SizedBox(width: 5),
+                                                          Text('Sell - Houbi',
+                                                            style: TextStyle(
+                                                                fontSize: 17, fontWeight: FontWeight.bold, color: Colors.redAccent
+                                                            ),),
+                                                        ],
+                                                      ),
+
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+                                                          Text('BTC',
+                                                            style: TextStyle(
+                                                                fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white
+                                                            ),),
+
+                                                          //SizedBox(width: 53),
+                                                          Text('\$ 44900',
+                                                            style: TextStyle(
+                                                                fontSize: 17, fontWeight: FontWeight.bold, color: Colors.lightGreenAccent
+                                                            ),),
+
+                                                          //SizedBox(width: 65),
+                                                          Text('\$ 45080',
+                                                            style: TextStyle(
+                                                                fontSize: 17, fontWeight: FontWeight.bold, color: Colors.redAccent
+                                                            ),),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+
+
                                               ),
-
-
                                             ),
                                           ),//
                                         ],
                                       ),
                                     ),
 
-                                    Container(
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(left: 16, right: 16, top: 7),
-                                            child: Container(
-                                              height: 100,
-                                              width: MediaQuery.of(context).size.width,
-                                              decoration: BoxDecoration(
-                                                color: Colors.blue[900],
-                                                borderRadius: BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12), bottomLeft: Radius.circular(12), bottomRight: Radius.circular(12)),
-                                              ),
-
-
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(25),
-                                                child: Column(
-                                                  children: [
-                                                    Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                      children: [
-                                                        Text('% 5',
-                                                          style: TextStyle(
-                                                              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white
-                                                          ),),
-
-                                                        //SizedBox(width: 5),
-                                                        // Text('5',
-                                                        //     style: TextStyle(
-                                                        //     fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white
-                                                        // ),),
-
-                                                        SizedBox(width: 5),
-                                                        Text('Buy - Binance',
-                                                          style: TextStyle(
-                                                              fontSize: 17, fontWeight: FontWeight.bold, color: Colors.lightGreenAccent
-                                                          ),),
-
-                                                        SizedBox(width: 5),
-                                                        Text('Sell - Houbi',
-                                                          style: TextStyle(
-                                                              fontSize: 17, fontWeight: FontWeight.bold, color: Colors.redAccent
-                                                          ),),
-                                                      ],
-                                                    ),
-
-                                                    Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                      children: [
-                                                        Text('BTC',
-                                                          style: TextStyle(
-                                                              fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white
-                                                          ),),
-
-                                                        //SizedBox(width: 53),
-                                                        Text('\$ 44900',
-                                                          style: TextStyle(
-                                                              fontSize: 17, fontWeight: FontWeight.bold, color: Colors.lightGreenAccent
-                                                          ),),
-
-                                                        //SizedBox(width: 65),
-                                                        Text('\$ 45080',
-                                                          style: TextStyle(
-                                                              fontSize: 17, fontWeight: FontWeight.bold, color: Colors.redAccent
-                                                          ),),
-                                                      ],
-                                                    ),
-                                                  ],
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context, MaterialPageRoute(builder: (_)=> Login()));
+                                      },
+                                      child: Container(
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(left: 16, right: 16, top: 7),
+                                              child: Container(
+                                                height: 100,
+                                                width: MediaQuery.of(context).size.width,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.blue[900],
+                                                  borderRadius: BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12), bottomLeft: Radius.circular(12), bottomRight: Radius.circular(12)),
                                                 ),
+
+
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(25),
+                                                  child: Column(
+                                                    children: [
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+                                                          Text('% 5',
+                                                            style: TextStyle(
+                                                                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white
+                                                            ),),
+
+                                                          //SizedBox(width: 5),
+                                                          // Text('5',
+                                                          //     style: TextStyle(
+                                                          //     fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white
+                                                          // ),),
+
+                                                          SizedBox(width: 5),
+                                                          Text('Buy - Binance',
+                                                            style: TextStyle(
+                                                                fontSize: 17, fontWeight: FontWeight.bold, color: Colors.lightGreenAccent
+                                                            ),),
+
+                                                          SizedBox(width: 5),
+                                                          Text('Sell - Houbi',
+                                                            style: TextStyle(
+                                                                fontSize: 17, fontWeight: FontWeight.bold, color: Colors.redAccent
+                                                            ),),
+                                                        ],
+                                                      ),
+
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+                                                          Text('BTC',
+                                                            style: TextStyle(
+                                                                fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white
+                                                            ),),
+
+                                                          //SizedBox(width: 53),
+                                                          Text('\$ 44900',
+                                                            style: TextStyle(
+                                                                fontSize: 17, fontWeight: FontWeight.bold, color: Colors.lightGreenAccent
+                                                            ),),
+
+                                                          //SizedBox(width: 65),
+                                                          Text('\$ 45080',
+                                                            style: TextStyle(
+                                                                fontSize: 17, fontWeight: FontWeight.bold, color: Colors.redAccent
+                                                            ),),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+
+
                                               ),
-
-
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
 
