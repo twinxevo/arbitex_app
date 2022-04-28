@@ -1,12 +1,12 @@
 import 'package:arbitex/Pages/profile.dart';
 import 'package:arbitex/Pages/wallet.dart';
-import 'package:arbitex/Pages/arb_home.dart';
+import 'package:arbitex/Pages/home.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../Pages/arb_login.dart';
-import '../Pages/arb_onboarding.dart';
-import '../Pages/arb_settings.dart';
+import '../arb_login.dart';
+import '../arb_onboarding.dart';
+import '../arb_settings.dart';
 import '../arb_home_trade.dart';
 
 class Navigationbar extends StatefulWidget {

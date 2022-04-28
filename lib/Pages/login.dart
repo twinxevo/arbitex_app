@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../Navigation/buttom_navigationBar.dart';
+import '../api_service/login_data_class.dart';
+import '../models/login_model.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -14,26 +19,19 @@ class _LoginState extends State<Login> {
   bool _isObscure = true;
   bool _isLoading = false;
   @override
+
+  void dispose(){
+    _emailField.dispose();
+    _passwordField.dispose();
+
+    super.dispose();
+  }
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       //backgroundColor: Colors.blue[200],
       body: Stack(
         children: [
-          // SafeArea(
-          //   child: Container(
-          //     height: size.height * .5,
-          //     width: size.width * 1,
-          //     decoration: BoxDecoration(
-          //       image: DecorationImage(
-          //         image: AssetImage("assets/Sign.jpg"),
-          //         fit: BoxFit.cover,
-          //         colorFilter: ColorFilter.mode(Colors.black45, BlendMode.darken)
-          //       ),
-          //     ),
-          //
-          //   ),
-          // ),
           SingleChildScrollView(
             child: Stack(
               children: <Widget>[
@@ -75,6 +73,7 @@ class _LoginState extends State<Login> {
                         child: new TextFormField(
                           keyboardType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
+                          autofillHints: [AutofillHints.email],
                           controller: _emailField,
                           validator: (input) => !(input?.contains('@') ?? false)
                               ? "Email id should be valid"
@@ -154,7 +153,24 @@ class _LoginState extends State<Login> {
                     SizedBox(height: 40),
                     Center(
                       child: ElevatedButton.icon(
-                        onPressed: () {},
+                        onPressed: () async {
+                          String email = _emailField.text.trim();
+                          String password = _passwordField.text.trim();
+                          LoginBody signUpBody = LoginBody(
+                              email: email, password: password);
+                          var provider = Provider.of<LoginDataClass>(context, listen: false);
+                          await provider.postLoginData(signUpBody);
+                          if (provider.isBack) {
+                            print('Login successful');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>  Navigationbar()),
+                            );
+                          }else
+                          {
+                            print('Confession');
+                          }
+                        },
                         label: const Text('Login'),
                         icon: const Icon(Icons.input_rounded),
                       ),

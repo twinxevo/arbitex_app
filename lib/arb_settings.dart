@@ -568,36 +568,6 @@ class ArbSettings extends StatelessWidget {
               ],
             ),
           ),
-          Align(
-            alignment: Alignment(0.019, -0.033),
-            child: Container(
-              width: 206.0,
-              height: 28.0,
-              decoration: BoxDecoration(
-                color: const Color(0xff2699fb),
-                border: Border.all(width: 1.0, color: const Color(0xff707070)),
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment(0.006, -0.032),
-            child: SizedBox(
-              width: 194.0,
-              height: 12.0,
-              child: Text(
-                'DEPOSIT & WITHDRAWAL',
-                style: TextStyle(
-                  fontFamily: 'Circular Std',
-                  fontSize: 12,
-                  color: const Color(0xfff2f5f7),
-                  letterSpacing: 2.4000000000000004,
-                  fontWeight: FontWeight.w300,
-                ),
-                textAlign: TextAlign.center,
-                softWrap: false,
-              ),
-            ),
-          ),
         ],
       ),
     );

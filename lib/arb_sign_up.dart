@@ -1,5 +1,5 @@
-import 'package:arbitex/Pages/arb_login.dart';
-import 'package:arbitex/Pages/arb_onboarding.dart';
+import 'package:arbitex/arb_login.dart';
+import 'package:arbitex/arb_onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
 import 'package:flutter_svg/flutter_svg.dart';
