@@ -1,4 +1,5 @@
-import 'package:arbitex/Pages/profile.dart';
+//import 'package:arbitex/Pages/profile.dart';
+import 'package:arbitex/Pages/profilee.dart';
 import 'package:arbitex/Pages/wallet.dart';
 import 'package:arbitex/Pages/home.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -19,7 +20,7 @@ class Navigationbar extends StatefulWidget {
 class _NavigationbarState extends State<Navigationbar> {
   int currentPage = 1;
   final screens = [
-    Profile(),
+    ProfilePage(),
     Home(),
     WalletPage(),
   ];

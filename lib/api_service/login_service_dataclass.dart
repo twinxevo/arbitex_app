@@ -5,6 +5,10 @@ import 'package:arbitex/Pages/signup.dart';
 import 'package:http/http.dart' as http;
 import '../models/login_model.dart';
 
+LoginBody usersFromJson(String str) => LoginBody.fromJson(json.decode(str));
+
+String usersToJson(LoginBody data) => json.encode(data.toJson());
+
 Future<http.Response?> login(LoginBody data) async {
   http.Response? response;
   try {

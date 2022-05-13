@@ -13,9 +13,9 @@ class SharedPrefrence {
 
   //accesstoken
 
-  Future<bool> setToken(String token) async {
+  Future<bool> setToken(String accessToken) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setString("token", token);
+    return prefs.setString("token", accessToken);
   }
 
   Future<String> getToken() async {

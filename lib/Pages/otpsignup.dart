@@ -41,18 +41,18 @@ class _OtpState extends State<Otp> {
           ),
         )
         //child
-            : Stack(
+            : SafeArea(
+              child: Stack(
           children: <Widget>[
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  SafeArea(
-                    child: Center(
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Center(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 200),
+                        padding: const EdgeInsets.only(top: 20),
                         child: Container(
-                          height: 200,
-                          width: 200,
+                          child: Image.asset(
+                              'assets/otp.png'),
                           decoration: BoxDecoration(
                             color: Colors.black,
                             borderRadius: BorderRadius.only(
@@ -64,81 +64,82 @@ class _OtpState extends State<Otp> {
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: 50),
-                  Text(
-                    'Verification',
-                    style: TextStyle(
-                        fontSize: 40,
-                        color: Colors.white,
-                        backgroundColor: Colors.blue[900],
-                        fontWeight: FontWeight.w900),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Enter the OTP sent to your e-mail',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.orange,
-                        fontWeight: FontWeight.normal),
-                  ),
-                  SizedBox(height: 100),
-                  Container(
-                    height: 43,
-                    width: size.width * .8,
-                    child: new TextFormField(
-                      keyboardType: TextInputType.number,
-                      textInputAction: TextInputAction.next,
-                      controller: _otpField,
-                      obscureText: true,
-                      decoration: new InputDecoration(
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.blue),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.blueGrey),
-                        ),
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 30),
-                  ElevatedButton(
-                    onPressed: () async{
-                        //Future<void> async; {
-                      String email = await SharedPrefrence().getEmail();
-                        //String email = signupEmail.text.trim();
-                        String verificationCode = _otpField.text.trim();
-                        OtpBody otpBody = OtpBody(
-                            email: email, verificationCode: verificationCode);
-                        var provider = Provider.of<OtpDataClass>(context, listen: false);
-                        await provider.postOtpData(otpBody);
-                        if (provider.isBack) {
-                          print('Login successful');
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) =>  Login()),
-                          );
-                        }else
-                        {
-                          print('Confession');
-                        }
-
-                        //}
-                    },
-                    child: Text(
-                      'Verify',
+                    SizedBox(height: 20),
+                    Text(
+                      'Verification',
                       style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 25,
                           color: Colors.white,
+                          backgroundColor: Colors.blue[900],
                           fontWeight: FontWeight.w900),
                     ),
-                  ),
-                ],
+                    SizedBox(height: 10),
+                    Text(
+                      'Enter the OTP sent to your e-mail',
+                      style: TextStyle(
+                          fontSize: 13,
+                          color: Colors.orange,
+                          fontWeight: FontWeight.normal),
+                    ),
+                    SizedBox(height: 50),
+                    Container(
+                      height: 43,
+                      width: size.width * .8,
+                      child: new TextFormField(
+                        keyboardType: TextInputType.number,
+                        textInputAction: TextInputAction.next,
+                        controller: _otpField,
+                        obscureText: true,
+                        decoration: new InputDecoration(
+                          enabledBorder: const OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.blue),
+                          ),
+                          focusedBorder: const OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.blueGrey),
+                          ),
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () async{
+                          //Future<void> async; {
+                        String email = await SharedPrefrence().getEmail();
+                          //String email = signupEmail.text.trim();
+                          String verificationCode = _otpField.text.trim();
+                          OtpBody otpBody = OtpBody(
+                              email: email, verificationCode: verificationCode);
+                          var provider = Provider.of<OtpDataClass>(context, listen: false);
+                          await provider.postOtpData(otpBody);
+                          if (provider.isBack) {
+                            print('Login successful');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>  Login()),
+                            );
+                          }else
+                          {
+                            print('Confession');
+                          }
+
+                          //}
+                      },
+                      child: Text(
+                        'Verify',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w900),
+                      ),
+                    ),
+                    SizedBox(height: 30),
+                  ],
+                ),
               ),
-            ),
           ],
-        );
+        ),
+            );
       }),);
   }
 }

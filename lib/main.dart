@@ -1,10 +1,14 @@
+import 'package:arbitex/Pages/otpsignup.dart';
+import 'package:arbitex/Pages/profilee.dart';
 import 'package:arbitex/Pages/signup.dart';
 import 'package:arbitex/Pages/login.dart';
+import 'package:arbitex/Pages/wallet.dart';
 import 'package:arbitex/arb_trades.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'api_service/login_data_class.dart';
+import 'api_service/login_service_dataclass.dart';
 import 'api_service/otp_data_class.dart';
 //import 'arb_login.dart';
 import 'arb_onboarding.dart';
@@ -46,6 +50,8 @@ class MyApp extends StatelessWidget {
       //home: Navigationbar(),
       //home: Signup(),
       home: Login(),
+      //home: WalletPage(),
+      //home: Otp(),
     );
   }
 }
