@@ -22,12 +22,11 @@ class LoginDataClass extends ChangeNotifier {
       Map<String, dynamic> map = json.decode(response.body);
       Map<String, dynamic> data = map["body"];
       String accessToken = data['accessToken'];
+      //String message = data['message'];
       print('token = $accessToken');
       SharedPrefrence().setToken(accessToken);
+      //SharedPrefrence().setMessage(message);
 
-      // print('Login successful');
-      // print(response.statusCode);
-      // print(response.body);
 
       isBack = true;
 

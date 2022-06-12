@@ -12,6 +12,13 @@ class SaveUsdtAddress extends StatefulWidget {
 class _SaveUsdtAddressState extends State<SaveUsdtAddress> {
   TextEditingController usdtAddress = TextEditingController();
   @override
+
+  void dispose() {
+    usdtAddress.dispose();
+
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
@@ -29,7 +36,7 @@ class _SaveUsdtAddressState extends State<SaveUsdtAddress> {
                     backgroundColor: Colors.blue[900],
                   ),),
                   Container(
-                    height: size.height * 0.3,
+                    height: size.height * 0.2,
                     color: Colors.white,
                   ),
 
@@ -37,7 +44,7 @@ class _SaveUsdtAddressState extends State<SaveUsdtAddress> {
 
                   Center(
                     child: Container(
-                      height: 43,
+                      height: 58,
                       width: size.width * .8,
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
@@ -73,7 +80,7 @@ class _SaveUsdtAddressState extends State<SaveUsdtAddress> {
                   ElevatedButton(onPressed: (){
                     usdtWallet = usdtAddress.text.trim();
                     print(usdtWallet);
-                    Navigator.pushReplacement(context,
+                    Navigator.pop(context,
                       MaterialPageRoute(
                           builder: (context) =>
                               const UsdtWithdrawal()),);

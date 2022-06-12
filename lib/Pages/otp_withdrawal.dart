@@ -8,24 +8,26 @@ import '../Navigation/shared_preferences.dart';
 import '../api_service/otp_data_class.dart';
 import '../models/otp_model.dart';
 
-class Otp extends StatefulWidget {
-  const Otp({Key? key}) : super(key: key);
+class OtpWithdraw extends StatefulWidget {
+  const OtpWithdraw({Key? key}) : super(key: key);
 
   @override
-  _OtpState createState() => _OtpState();
+  _OtpWithdrawState createState() => _OtpWithdrawState();
 }
 
 TextEditingController _emailField = TextEditingController();
 TextEditingController _otpField = TextEditingController();
 
-class _OtpState extends State<Otp> {
+class _OtpWithdrawState extends State<OtpWithdraw> {
   bool _isObscure = true;
   @override
+
   void dispose() {
     _otpField.dispose();
 
     super.dispose();
   }
+
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
@@ -47,8 +49,8 @@ class _OtpState extends State<Otp> {
         )
         //child
             : SafeArea(
-              child: Stack(
-          children: <Widget>[
+          child: Stack(
+            children: <Widget>[
               SingleChildScrollView(
                 child: Column(
                   children: [
@@ -71,7 +73,7 @@ class _OtpState extends State<Otp> {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      'Verification',
+                      'Authurise ',
                       style: TextStyle(
                           fontSize: 25,
                           color: Colors.white,
@@ -80,7 +82,7 @@ class _OtpState extends State<Otp> {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      'Enter the OTP sent to your e-mail',
+                      'Kindly enter the OTP sent to your email address',
                       style: TextStyle(
                           fontSize: 13,
                           color: Colors.orange,
@@ -109,41 +111,29 @@ class _OtpState extends State<Otp> {
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () async{
-                          //Future<void> async; {
-                        String email = await SharedPrefrence().getEmail();
-                          //String email = signupEmail.text.trim();
-                          String verificationCode = _otpField.text.trim();
-                          OtpBody otpBody = OtpBody(
-                              email: email, verificationCode: verificationCode);
-                          var provider = Provider.of<OtpDataClass>(context, listen: false);
-                          await provider.postOtpData(otpBody);
-                          if (provider.isBack) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(
-                                    'Registration Successful'
-                                ),
-                                  backgroundColor: Colors.blue,
-                                ));
-                            print('Login successful');
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) =>  Login()),
-                            );
-                          }else
-                          {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(
-                                    'Invalid OTP Entered'
-                                ),
-                                  backgroundColor: Colors.redAccent,
-                                ));
-                            print('Confession');
-                          }
-
-                          //}
+                        // //Future<void> async; {
+                        // String email = await SharedPrefrence().getEmail();
+                        // //String email = signupEmail.text.trim();
+                        // String verificationCode = _otpField.text.trim();
+                        // OtpBody otpBody = OtpBody(
+                        //     email: email, verificationCode: verificationCode);
+                        // var provider = Provider.of<OtpDataClass>(context, listen: false);
+                        // await provider.postOtpData(otpBody);
+                        // if (provider.isBack) {
+                        //   print('Login successful');
+                        //   Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(builder: (context) =>  Login()),
+                        //   );
+                        // }else
+                        // {
+                        //   print('Confession');
+                        // }
+                        //
+                        // //}
                       },
-                      child: Text(
-                        'Verify',
+                      child: const Text(
+                        'Authorize Withdrawal',
                         style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
@@ -154,9 +144,9 @@ class _OtpState extends State<Otp> {
                   ],
                 ),
               ),
-          ],
-        ),
-            );
+            ],
+          ),
+        );
       }),);
   }
 }

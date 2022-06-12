@@ -1,3 +1,4 @@
+import 'package:arbitex/Navigation/shared_preferences.dart';
 import 'package:arbitex/Pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -28,12 +29,6 @@ class _LoginState extends State<Login> {
   final LoginDataClass loginDataClass = LoginDataClass();
 
   //late LoginRequestModel requestModel;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   GetUserProfile();
-  // }
 
   @override
   void dispose() {
@@ -205,6 +200,7 @@ class _LoginState extends State<Login> {
                                 Center(
                                   child: ElevatedButton.icon(
                                     onPressed: () async {
+                                      String message = await SharedPrefrence().getMessage();
                                       String email = _emailField.text.trim();
                                       String password = _passwordField.text.trim();
                                       Data loginBody = Data(
@@ -212,6 +208,13 @@ class _LoginState extends State<Login> {
                                       var provider = Provider.of<LoginDataClass>(context, listen: false);
                                       await provider.postLoginData(loginBody);
                                       if(provider.isBack) {
+
+                                        ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(content: Text(
+                                                'Login Successful'
+                                            ),
+                                               backgroundColor: Colors.blue,
+                                            ));
                                       //if(globalFormKey.currentState!.validate()) {
 
                                             Navigator.pushReplacement(context,
@@ -220,59 +223,16 @@ class _LoginState extends State<Login> {
                                                       Navigationbar()),);
                                           }
                                         else {
+                                        ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(content: Text(
+                                                'Incorrect email or password \n'
+                                                    'hint: Password must contain special character(s)',
+                                            ),
+                                              backgroundColor: Colors.redAccent,
+                                            ));
                                           throw Exception('faileddddd');
                                         }
-                                        // if(provider.isBack) {
-                                        //   print('We done login');
-                                        //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Navigationbar()),);
-                                        // }
-                                        // else {
-                                        //   print('Omo i done confuse');
-                                        // }
-                                        // LoginDataClass loginData = LoginDataClass();
-                                        // loginData.login(requestModel).then((value) async {
-                                        //   if(value.accessToken.isEmpty) {
-                                        //     ScaffoldMessenger.of(context).showSnackBar(
-                                        //         SnackBar(content: Text(
-                                        //             'We done do am ohhhhh'
-                                        //         ),
-                                        //         ));
-                                        //     if(provider.isBack) {
-                                        //       Navigator.push(context,
-                                        //         MaterialPageRoute(
-                                        //             builder: (context) =>
-                                        //                 Navigationbar()),);
-                                        //     }
-                                        //   }else {
-                                        //     ScaffoldMessenger.of(context).showSnackBar(
-                                        //         SnackBar(content: Text(
-                                        //             value.message
-                                        //         ),
-                                        //         ));
-                                        //   }
-                                        // });
-                                        //print(requestModel.toJson());
-                                     // }
                                     },
-                                    // onPressed: () async {
-                                    //   String email = _emailField.text.trim();
-                                    //   String password = _passwordField.text.trim();
-                                    //   LoginBody loginBody = LoginBody(
-                                    //       email: email, password: password);
-                                    //   var provider = Provider.of<LoginDataClass>(context, listen: false);
-                                    //   await provider.postLoginData(loginBody);
-                                    //   //await provider.login(email, password);
-                                    //   if (provider.isBack) {
-                                    //     print('Login successful');
-                                    //     Navigator.pushReplacement(
-                                    //       context,
-                                    //       MaterialPageRoute(builder: (context) =>  Navigationbar()),
-                                    //     );
-                                    //   }else
-                                    //   {
-                                    //     print('Confession');
-                                    //   }
-                                    // },
                                     label: const Text('Login'),
                                     icon: const Icon(Icons.input_rounded),
                                   ),

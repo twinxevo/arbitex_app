@@ -1,4 +1,5 @@
 import 'package:arbitex/Navigation/variables.dart';
+import 'package:arbitex/Pages/otp_withdrawal.dart';
 import 'package:arbitex/Pages/save_xrp_address.dart';
 import 'package:flutter/material.dart';
 
@@ -110,7 +111,12 @@ class _XrpWithdrawalState extends State<XrpWithdrawal> {
 
             Center(
               child: ElevatedButton(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.pushReplacement(context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            OtpWithdraw()),);
+                },
                 child: const Text(
                   'Continue', style: TextStyle(
                     fontWeight: FontWeight.bold,

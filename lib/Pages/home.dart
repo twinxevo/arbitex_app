@@ -1,3 +1,4 @@
+import 'package:arbitex/Navigation/variables.dart';
 import 'package:arbitex/Pages/login.dart';
 import 'package:arbitex/Pages/otpsignup.dart';
 import 'package:arbitex/Pages/signup.dart';

@@ -27,7 +27,8 @@ TextEditingController _otpField = TextEditingController();
 String verificationCode = _otpField.text.trim();
 
 class _SignupState extends State<Signup> {
-  bool _isObscure = true;
+  bool hidePassword = true;
+  bool hidePasswordC = true;
   bool _isLoading = false;
 
   @override
@@ -210,10 +211,11 @@ class _SignupState extends State<Signup> {
                               keyboardType: TextInputType.visiblePassword,
                               textInputAction: TextInputAction.next,
                               controller: _passwordField,
-                              validator: (input) =>
-                              (input != null && input.length < 6)
-                                  ? "Password should be more than 5 characters"
+                              validator: (input) => input!.length < 5
+                              //(input != null && input.length < 6)
+                                  ? "Password must contain special characters"
                                   : null,
+                              obscureText: hidePassword,
                               decoration: new InputDecoration(
                                 labelText: 'Password',
                                 enabledBorder: const OutlineInputBorder(
@@ -221,12 +223,12 @@ class _SignupState extends State<Signup> {
                                       color: Colors.blue),
                                 ),
                                 suffixIcon: IconButton(
-                                    icon: Icon(_isObscure
+                                    icon: Icon(hidePassword
                                         ? Icons.visibility
                                         : Icons.visibility_off),
                                     onPressed: () {
                                       setState(() {
-                                        _isObscure = !_isObscure;
+                                        hidePassword = !hidePassword;
                                       });
                                     }),
                                 prefixIcon: Icon(
@@ -251,9 +253,10 @@ class _SignupState extends State<Signup> {
                               keyboardType: TextInputType.visiblePassword,
                               textInputAction: TextInputAction.next,
                               controller: _confirmpasswordField,
+                              obscureText: hidePasswordC,
                               validator: (input) =>
                               (input != null && input.length < 6)
-                                  ? "Password should be more than 5 characters"
+                                  ? "Password must contain special characters"
                                   : null,
                               decoration: new InputDecoration(
                                 labelText: 'Confirm Password',
@@ -262,12 +265,13 @@ class _SignupState extends State<Signup> {
                                       color: Colors.blue),
                                 ),
                                 suffixIcon: IconButton(
-                                    icon: Icon(_isObscure
+                                    icon: Icon(
+                                        hidePasswordC
                                         ? Icons.visibility
                                         : Icons.visibility_off),
                                     onPressed: () {
                                       setState(() {
-                                        _isObscure = !_isObscure;
+                                        hidePasswordC = !hidePasswordC;
                                       });
                                     }),
                                 prefixIcon: Icon(
@@ -303,8 +307,16 @@ class _SignupState extends State<Signup> {
                                     context,
                                     MaterialPageRoute(builder: (context) =>  Otp()),
                                   );
-                                }else
-                                  {
+                                }
+                                else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text(
+                                        'hint: Password must contain special character(s)\n'
+                                            'All Fields are required. \n'
+                                            'Username may have been taken',
+                                      ),
+                                        backgroundColor: Colors.redAccent,
+                                      ));
                                     print('Confession');
                                   }
 

@@ -1,4 +1,3 @@
-import 'package:arbitex/Pages/signup.dart';
 
 class SignupBody{
   String email;

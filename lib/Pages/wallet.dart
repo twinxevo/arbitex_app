@@ -403,53 +403,69 @@ class _WalletPageState extends State<WalletPage> {
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.only(
-                                                          left: 8, right: 8),
+                                                          left: 10, right: 10),
                                                   child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                            .size
-                                                            .width,
-                                                    color: Colors.grey.shade100,
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          '$walletAddress',
-                                                          style: TextStyle(
-                                                            fontSize: 10,
-                                                            color: Colors.black,
-                                                          ),
-                                                        ),
-                                                        SizedBox(width: 10),
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            await FlutterClipboard.copy(walletAddress);
-
-                                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                                    SnackBar(content: Text(
-                                                                  'Wallet Address copied'
-                                                                    ),
-                                                              duration: Duration(seconds: 120),
-                                                              action: SnackBarAction(
-                                                                label: 'Dismiss',
-                                                                onPressed: () {},
+                                                    height: 50,
+                                                    width: MediaQuery.of(context).size.width,
+                                                    decoration: const BoxDecoration(
+                                                      color: Colors.grey,
+                                                      borderRadius: BorderRadius.only(
+                                                          topLeft: Radius.circular(12),
+                                                          topRight: Radius.circular(12),
+                                                          bottomLeft: Radius.circular(12),
+                                                          bottomRight: Radius.circular(12)),
+                                                    ),
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.only(left: 18, right: 15),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Padding(
+                                                            padding: const EdgeInsets.only(left:12.0),
+                                                            child: Text(
+                                                              '$walletAddress',
+                                                              style: TextStyle(
+                                                                fontSize: 12,
+                                                                fontWeight: FontWeight.w500,
+                                                                color: Colors.black,
                                                               ),
-                                                            ));
-                                                          },
-                                                          child: Icon(
-                                                            Icons
-                                                                .content_copy_rounded,
-                                                            color: Colors
-                                                                .blue[900],
-                                                            size: 30,
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                          SizedBox(width: 10),
+                                                          InkWell(
+                                                            onTap: () async {
+                                                              await FlutterClipboard.copy(walletAddress);
+
+                                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                                      SnackBar(content: Text(
+                                                                    'Wallet Address copied'
+                                                                      ),
+                                                                duration: Duration(seconds: 120),
+                                                                action: SnackBarAction(
+                                                                  label: 'Dismiss',
+                                                                  onPressed: () {},
+                                                                ),
+                                                              ));
+                                                            },
+                                                            child: Padding(
+                                                              padding: const EdgeInsets.only(right:10.0),
+                                                              child: Icon(
+                                                                Icons
+                                                                    .content_copy_rounded,
+                                                                color: Colors
+                                                                    .blue[900],
+                                                                size: 20,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
+                                                SizedBox(height: 10),
                                               ],
                                             ),
                                           ),
@@ -581,50 +597,65 @@ class _WalletPageState extends State<WalletPage> {
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.only(
-                                                          left: 8, right: 8),
+                                                          left: 10, right: 10),
                                                   child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                            .size
-                                                            .width,
-                                                    color: Colors.grey.shade100,
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          '$walletAddress',
-                                                          style: TextStyle(
-                                                            fontSize: 10,
-                                                            color: Colors.black,
+                                                    height: 50,
+                                                    width: MediaQuery.of(context).size.width,
+                                                    decoration: const BoxDecoration(
+                                                      color: Colors.grey,
+                                                      borderRadius: BorderRadius.only(
+                                                          topLeft: Radius.circular(12),
+                                                          topRight: Radius.circular(12),
+                                                          bottomLeft: Radius.circular(12),
+                                                          bottomRight: Radius.circular(12)),
+                                                    ),
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.only(left:18.0, right: 15),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                        children: [
+                                                          Padding(
+                                                            padding: const EdgeInsets.only(left:12.0),
+                                                            child: Text(
+                                                              '$walletAddress',
+                                                              style: TextStyle(
+                                                                fontSize: 12,
+                                                                fontWeight: FontWeight.w500,
+                                                                color: Colors.black,
+                                                              ),
+                                                            ),
                                                           ),
-                                                        ),
-                                                        SizedBox(width: 10),
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            await FlutterClipboard.copy(walletAddress);
+                                                          SizedBox(width: 10),
+                                                          InkWell(
+                                                            onTap: () async {
+                                                              await FlutterClipboard.copy(walletAddress);
 
-                                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                                SnackBar(content: Text(
-                                                                    'Wallet Address copied'
-                                                                ),
-                                                                  duration: Duration(seconds: 120),
-                                                                  action: SnackBarAction(
-                                                                    label: 'Dismiss',
-                                                                    onPressed: () {},
+                                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                                  SnackBar(content: Text(
+                                                                      'Wallet Address copied'
                                                                   ),
-                                                                ));
-                                                          },
-                                                          child: Icon(
-                                                            Icons
-                                                                .content_copy_rounded,
-                                                            color: Colors
-                                                                .blue[900],
-                                                            size: 30,
+                                                                    duration: Duration(seconds: 120),
+                                                                    action: SnackBarAction(
+                                                                      label: 'Dismiss',
+                                                                      onPressed: () {},
+                                                                    ),
+                                                                  ));
+                                                            },
+                                                            child: Padding(
+                                                              padding: const EdgeInsets.only(right:10.0),
+                                                              child: Icon(
+                                                                Icons
+                                                                    .content_copy_rounded,
+                                                                color: Colors
+                                                                    .blue[900],
+                                                                size: 20,
+                                                              ),
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -758,51 +789,66 @@ class _WalletPageState extends State<WalletPage> {
                                                 SizedBox(height: 20),
                                                 Padding(
                                                   padding:
-                                                      const EdgeInsets.only(
-                                                          left: 8, right: 8),
+                                                  const EdgeInsets.only(
+                                                      left: 10, right: 10),
                                                   child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                            .size
-                                                            .width,
-                                                    color: Colors.grey.shade100,
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          '$walletAddress',
-                                                          style: TextStyle(
-                                                            fontSize: 10,
-                                                            color: Colors.black,
+                                                    height: 50,
+                                                    width: MediaQuery.of(context).size.width,
+                                                    decoration: const BoxDecoration(
+                                                      color: Colors.grey,
+                                                      borderRadius: BorderRadius.only(
+                                                          topLeft: Radius.circular(12),
+                                                          topRight: Radius.circular(12),
+                                                          bottomLeft: Radius.circular(12),
+                                                          bottomRight: Radius.circular(12)),
+                                                    ),
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.only(left:18.0, right: 15),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                        children: [
+                                                          Padding(
+                                                            padding: const EdgeInsets.only(left:12.0),
+                                                            child: Text(
+                                                              '$walletAddress',
+                                                              style: TextStyle(
+                                                                fontSize: 12,
+                                                                fontWeight: FontWeight.w500,
+                                                                color: Colors.black,
+                                                              ),
+                                                            ),
                                                           ),
-                                                        ),
-                                                        SizedBox(width: 10),
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            await FlutterClipboard.copy(walletAddress);
+                                                          SizedBox(width: 10),
+                                                          InkWell(
+                                                            onTap: () async {
+                                                              await FlutterClipboard.copy(walletAddress);
 
-                                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                                SnackBar(content: Text(
-                                                                    'Wallet Address copied'
-                                                                ),
-                                                                  duration: Duration(seconds: 120),
-                                                                  action: SnackBarAction(
-                                                                    label: 'Dismiss',
-                                                                    onPressed: () {},
+                                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                                  SnackBar(content: Text(
+                                                                      'Wallet Address copied'
                                                                   ),
-                                                                ));
-                                                          },
-                                                          child: Icon(
-                                                            Icons
-                                                                .content_copy_rounded,
-                                                            color: Colors
-                                                                .blue[900],
-                                                            size: 30,
+                                                                    duration: Duration(seconds: 120),
+                                                                    action: SnackBarAction(
+                                                                      label: 'Dismiss',
+                                                                      onPressed: () {},
+                                                                    ),
+                                                                  ));
+                                                            },
+                                                            child: Padding(
+                                                              padding: const EdgeInsets.only(right:10.0),
+                                                              child: Icon(
+                                                                Icons
+                                                                    .content_copy_rounded,
+                                                                color: Colors
+                                                                    .blue[900],
+                                                                size: 20,
+                                                              ),
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -936,51 +982,66 @@ class _WalletPageState extends State<WalletPage> {
                                                 SizedBox(height: 20),
                                                 Padding(
                                                   padding:
-                                                      const EdgeInsets.only(
-                                                          left: 8, right: 8),
+                                                  const EdgeInsets.only(
+                                                      left: 10, right: 10),
                                                   child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                            .size
-                                                            .width,
-                                                    color: Colors.grey.shade100,
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          '$walletAddress',
-                                                          style: TextStyle(
-                                                            fontSize: 10,
-                                                            color: Colors.black,
+                                                    height: 50,
+                                                    width: MediaQuery.of(context).size.width,
+                                                    decoration: const BoxDecoration(
+                                                      color: Colors.grey,
+                                                      borderRadius: BorderRadius.only(
+                                                          topLeft: Radius.circular(12),
+                                                          topRight: Radius.circular(12),
+                                                          bottomLeft: Radius.circular(12),
+                                                          bottomRight: Radius.circular(12)),
+                                                    ),
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.only(left:18.0, right: 15),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                        children: [
+                                                          Padding(
+                                                            padding: const EdgeInsets.only(left:12.0),
+                                                            child: Text(
+                                                              '$walletAddress',
+                                                              style: TextStyle(
+                                                                fontSize: 12,
+                                                                fontWeight: FontWeight.w500,
+                                                                color: Colors.black,
+                                                              ),
+                                                            ),
                                                           ),
-                                                        ),
-                                                        SizedBox(width: 10),
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            await FlutterClipboard.copy(walletAddress);
+                                                          SizedBox(width: 10),
+                                                          InkWell(
+                                                            onTap: () async {
+                                                              await FlutterClipboard.copy(walletAddress);
 
-                                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                                SnackBar(content: Text(
-                                                                    'Wallet Address copied'
-                                                                ),
-                                                                  duration: Duration(seconds: 120),
-                                                                  action: SnackBarAction(
-                                                                    label: 'Dismiss',
-                                                                    onPressed: () {},
+                                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                                  SnackBar(content: Text(
+                                                                      'Wallet Address copied'
                                                                   ),
-                                                                ));
-                                                          },
-                                                          child: Icon(
-                                                            Icons
-                                                                .content_copy_rounded,
-                                                            color: Colors
-                                                                .blue[900],
-                                                            size: 30,
+                                                                    duration: Duration(seconds: 120),
+                                                                    action: SnackBarAction(
+                                                                      label: 'Dismiss',
+                                                                      onPressed: () {},
+                                                                    ),
+                                                                  ));
+                                                            },
+                                                            child: Padding(
+                                                              padding: const EdgeInsets.only(right:10.0),
+                                                              child: Icon(
+                                                                Icons
+                                                                    .content_copy_rounded,
+                                                                color: Colors
+                                                                    .blue[900],
+                                                                size: 20,
+                                                              ),
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -1114,51 +1175,66 @@ class _WalletPageState extends State<WalletPage> {
                                                 SizedBox(height: 20),
                                                 Padding(
                                                   padding:
-                                                      const EdgeInsets.only(
-                                                          left: 8, right: 8),
+                                                  const EdgeInsets.only(
+                                                      left: 10, right: 10),
                                                   child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                            .size
-                                                            .width,
-                                                    color: Colors.grey.shade100,
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          '$walletAddress',
-                                                          style: TextStyle(
-                                                            fontSize: 10,
-                                                            color: Colors.black,
+                                                    height: 50,
+                                                    width: MediaQuery.of(context).size.width,
+                                                    decoration: const BoxDecoration(
+                                                      color: Colors.grey,
+                                                      borderRadius: BorderRadius.only(
+                                                          topLeft: Radius.circular(12),
+                                                          topRight: Radius.circular(12),
+                                                          bottomLeft: Radius.circular(12),
+                                                          bottomRight: Radius.circular(12)),
+                                                    ),
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.only(left:18.0, right: 15),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                        children: [
+                                                          Padding(
+                                                            padding: const EdgeInsets.only(left:12.0),
+                                                            child: Text(
+                                                              '$walletAddress',
+                                                              style: TextStyle(
+                                                                fontSize: 12,
+                                                                fontWeight: FontWeight.w500,
+                                                                color: Colors.black,
+                                                              ),
+                                                            ),
                                                           ),
-                                                        ),
-                                                        SizedBox(width: 10),
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            await FlutterClipboard.copy(walletAddress);
+                                                          SizedBox(width: 10),
+                                                          InkWell(
+                                                            onTap: () async {
+                                                              await FlutterClipboard.copy(walletAddress);
 
-                                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                                SnackBar(content: Text(
-                                                                    'Wallet Address copied'
-                                                                ),
-                                                                  duration: Duration(seconds: 120),
-                                                                  action: SnackBarAction(
-                                                                    label: 'Dismiss',
-                                                                    onPressed: () {},
+                                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                                  SnackBar(content: Text(
+                                                                      'Wallet Address copied'
                                                                   ),
-                                                                ));
-                                                          },
-                                                          child: Icon(
-                                                            Icons
-                                                                .content_copy_rounded,
-                                                            color: Colors
-                                                                .blue[900],
-                                                            size: 30,
+                                                                    duration: Duration(seconds: 120),
+                                                                    action: SnackBarAction(
+                                                                      label: 'Dismiss',
+                                                                      onPressed: () {},
+                                                                    ),
+                                                                  ));
+                                                            },
+                                                            child: Padding(
+                                                              padding: const EdgeInsets.only(right:10.0),
+                                                              child: Icon(
+                                                                Icons
+                                                                    .content_copy_rounded,
+                                                                color: Colors
+                                                                    .blue[900],
+                                                                size: 20,
+                                                              ),
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -1241,31 +1317,6 @@ class _WalletPageState extends State<WalletPage> {
     );
   }
 
-  // void bottomSheet(context) {
-  //   showModalBottomSheet(
-  //     context: context,
-  //     backgroundColor: Colors.transparent,
-  //     builder: (context) => Container(
-  //       height: 200,
-  //       width: MediaQuery.of(context).size.width,
-  //       decoration: BoxDecoration(
-  //           color: Colors.white,
-  //           borderRadius: BorderRadius.only(
-  //               topRight: Radius.circular(25), topLeft: Radius.circular(25))),
-  //       child: Column(
-  //         children: [
-  //           Padding(
-  //             padding: const EdgeInsets.all(8.0),
-  //             child: Text('USDT Deposit', style: TextStyle(fontSize: 25, color: Colors.blue[900], fontWeight: FontWeight.bold)),
-  //           ),
-  //           SizedBox(height: 30),
-  //
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
-
   void withdrawalBottomSheet() {
     var size = MediaQuery.of(context).size;
     showModalBottomSheet(
@@ -1284,36 +1335,12 @@ class _WalletPageState extends State<WalletPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Padding(
-              //   padding:
-              //   const EdgeInsets.only(
-              //       top: 8, left: 180),
-              //   child: Container(
-              //     height: 5,
-              //     width: 30,
-              //     decoration: BoxDecoration(
-              //       color: Colors.blue[900],
-              //       borderRadius:
-              //       BorderRadius.only(
-              //           topLeft: Radius
-              //               .circular(12),
-              //           topRight: Radius
-              //               .circular(12),
-              //           bottomLeft: Radius
-              //               .circular(12),
-              //           bottomRight:
-              //           Radius
-              //               .circular(
-              //               12)),
-              //     ),
-              //   ),
-              // ),
               Padding(
                 padding:
-                const EdgeInsets.only(top: 15, left: 15),
+                const EdgeInsets.only(top: 8, left: 15),
                 child: Text('Select Coin for Withdrawal',
                     style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 22,
                         color:
                         Colors.blue[900],
                         fontWeight:
@@ -1324,7 +1351,7 @@ class _WalletPageState extends State<WalletPage> {
                 padding: const EdgeInsets.only(left: 16),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(context,
+                    Navigator.pushReplacement(context,
                       MaterialPageRoute(
                           builder: (context) =>
                               BtcWithdrawal()),);

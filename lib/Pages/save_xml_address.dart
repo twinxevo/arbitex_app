@@ -13,6 +13,13 @@ class SaveXmlAddress extends StatefulWidget {
 class _SaveXmlAddressState extends State<SaveXmlAddress> {
   TextEditingController xmlAddress = TextEditingController();
   @override
+
+  void dispose() {
+    xmlAddress.dispose();
+
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
@@ -30,7 +37,7 @@ class _SaveXmlAddressState extends State<SaveXmlAddress> {
                     backgroundColor: Colors.blue[900],
                   ),),
                   Container(
-                    height: size.height * 0.3,
+                    height: size.height * 0.2,
                     color: Colors.white,
                   ),
 
@@ -38,7 +45,7 @@ class _SaveXmlAddressState extends State<SaveXmlAddress> {
 
                   Center(
                     child: Container(
-                      height: 43,
+                      height: 58,
                       width: size.width * .8,
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
@@ -74,7 +81,7 @@ class _SaveXmlAddressState extends State<SaveXmlAddress> {
                   ElevatedButton(onPressed: (){
                     xmlWallet = xmlAddress.text.trim();
                     print(xmlWallet);
-                    Navigator.pushReplacement(context,
+                    Navigator.pop(context,
                       MaterialPageRoute(
                           builder: (context) =>
                           const XmlWithdrawal()),);

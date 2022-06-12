@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:arbitex/api_service/signup_service.dart';
+import 'package:arbitex/models/login_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 

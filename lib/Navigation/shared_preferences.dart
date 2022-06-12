@@ -23,16 +23,16 @@ class SharedPrefrence {
     return prefs.getString("token") ?? '';
   }
 
-  //Username
+  //Message
 
-  Future<bool> setUsername(String username) async {
+  Future<bool> setMessage(String message) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setString("username", username);
+    return prefs.setString("message", message);
   }
 
-  Future<String> getUsername() async {
+  Future<String> getMessage() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString("username") ?? '';
+    return prefs.getString("message") ?? '';
   }
 
 //fullName
