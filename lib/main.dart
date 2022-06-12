@@ -1,3 +1,4 @@
+import 'package:arbitex/Pages/btc_withdrawal.dart';
 import 'package:arbitex/Pages/otpsignup.dart';
 import 'package:arbitex/Pages/profilee.dart';
 import 'package:arbitex/Pages/signup.dart';
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
       home: Login(),
       //home: WalletPage(),
       //home: Otp(),
+      //home: BtcWithdrawal(),
     );
   }
 }

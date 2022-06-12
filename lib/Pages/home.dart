@@ -1,6 +1,8 @@
 import 'package:arbitex/Pages/login.dart';
 import 'package:arbitex/Pages/otpsignup.dart';
 import 'package:arbitex/Pages/signup.dart';
+import 'package:arbitex/api_service/getprofile.dart';
+import 'package:arbitex/models/user_details_model.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -11,6 +13,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  bool circular = true;
+  UserInfo userDetail = UserInfo(username: '', fullName: '', email: '', userId: '');
+  UserDetails userDetails = UserDetails();
+  @override
+  void initState() {
+    getAllDetails();
+  }
+
   double _currentSliderValue = 0;
   @override
   Widget build(BuildContext context) {
@@ -58,7 +69,7 @@ class _HomeState extends State<Home> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 16),
                                 child: Text(
-                                  '[NICKNAME]',
+                                  userDetail.username,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 13,
@@ -740,4 +751,13 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+  void getAllDetails() async{
+    var response = await userDetails.get('https://abitrex-backend.herokuapp.com/api/account/myprofile');
+    setState(() {
+      userDetail = UserInfo.fromJson(response['body']);
+      circular = false;
+    });
+  }
 }
+
+

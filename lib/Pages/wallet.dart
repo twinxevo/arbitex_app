@@ -1,3 +1,8 @@
+import 'package:arbitex/Pages/btc_withdrawal.dart';
+import 'package:arbitex/Pages/ltc_withdrawal.dart';
+import 'package:arbitex/Pages/usdt_withdrawal.dart';
+import 'package:arbitex/Pages/xml_withdrawal.dart';
+import 'package:arbitex/Pages/xrp_withdrawal.dart';
 import 'package:arbitex/arb_login.dart';
 import 'package:arbitex/arb_onboarding.dart';
 import 'package:arbitex/arb_settings.dart';
@@ -164,43 +169,49 @@ class _WalletPageState extends State<WalletPage> {
                                             Padding(
                                               padding: const EdgeInsets.only(
                                                   left: 5, top: 7, bottom: 5),
-                                              child: Container(
-                                                height: 70,
-                                                width: 100,
-                                                decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                          topLeft: Radius
-                                                              .circular(8),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  0),
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  12),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  0)),
-                                                ),
-                                                child: Center(
-                                                  child: Column(
-                                                    children: [
-                                                      Icon(
-                                                        Icons.send_outlined,
-                                                        color: Colors.blue[900],
-                                                        size: 30,
-                                                      ),
-                                                      SizedBox(height: 5),
-                                                      Text(
-                                                        'Withdraw',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color:
-                                                              Colors.blue[900],
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  print('Withdrawal successful');
+                                                  withdrawalBottomSheet();
+                                                },
+                                                child: Container(
+                                                  height: 70,
+                                                  width: 100,
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.white,
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                            topLeft: Radius
+                                                                .circular(8),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    0),
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    12),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    0)),
+                                                  ),
+                                                  child: Center(
+                                                    child: Column(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.send_outlined,
+                                                          color: Colors.blue[900],
+                                                          size: 30,
                                                         ),
-                                                      ),
-                                                    ],
+                                                        SizedBox(height: 5),
+                                                        Text(
+                                                          'Withdraw',
+                                                          style: TextStyle(
+                                                            fontSize: 15,
+                                                            color:
+                                                                Colors.blue[900],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -208,44 +219,49 @@ class _WalletPageState extends State<WalletPage> {
                                             Padding(
                                               padding: const EdgeInsets.only(
                                                   top: 7, bottom: 5),
-                                              child: Container(
-                                                height: 70,
-                                                width: 100,
-                                                decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                          topLeft: Radius
-                                                              .circular(0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  12),
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  0),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  12)),
-                                                ),
-                                                child: Center(
-                                                  child: Column(
-                                                    children: [
-                                                      Icon(
-                                                        Icons
-                                                            .history_edu_rounded,
-                                                        color: Colors.blue[900],
-                                                        size: 30,
-                                                      ),
-                                                      SizedBox(height: 5),
-                                                      Text(
-                                                        'History',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color:
-                                                              Colors.blue[900],
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  print('Displaying Transaction history');
+                                                },
+                                                child: Container(
+                                                  height: 70,
+                                                  width: 100,
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.white,
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                            topLeft: Radius
+                                                                .circular(0),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    12),
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    12)),
+                                                  ),
+                                                  child: Center(
+                                                    child: Column(
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .history_edu_rounded,
+                                                          color: Colors.blue[900],
+                                                          size: 30,
                                                         ),
-                                                      ),
-                                                    ],
+                                                        SizedBox(height: 5),
+                                                        Text(
+                                                          'History',
+                                                          style: TextStyle(
+                                                            fontSize: 15,
+                                                            color:
+                                                                Colors.blue[900],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -462,6 +478,11 @@ class _WalletPageState extends State<WalletPage> {
                                                 child: Row(
                                                   children: [
                                                     //Icon(Icons.attach_money_sharp, color: Colors.blue[900], size: 40,),
+                                                    CircleAvatar(
+                                                        radius: 12,
+                                                        backgroundImage: AssetImage("assets/BTC.png")
+                                                    ),
+                                                    SizedBox(width: 10),
                                                     Text(
                                                       'BTC',
                                                       style: TextStyle(
@@ -635,6 +656,11 @@ class _WalletPageState extends State<WalletPage> {
                                                 child: Row(
                                                   children: [
                                                     //Icon(Icons.attach_money_sharp, color: Colors.blue[900], size: 40,),
+                                                    CircleAvatar(
+                                                        radius: 12,
+                                                        backgroundImage: AssetImage("assets/USDT.png")
+                                                    ),
+                                                    SizedBox(width: 10),
                                                     Text(
                                                       'USDT',
                                                       style: TextStyle(
@@ -808,6 +834,11 @@ class _WalletPageState extends State<WalletPage> {
                                                 child: Row(
                                                   children: [
                                                     //Icon(Icons.attach_money_sharp, color: Colors.blue[900], size: 40,),
+                                                    CircleAvatar(
+                                                        radius: 12,
+                                                        backgroundImage: AssetImage("assets/XRP.png")
+                                                    ),
+                                                    SizedBox(width: 10),
                                                     Text(
                                                       'XRP',
                                                       style: TextStyle(
@@ -981,6 +1012,11 @@ class _WalletPageState extends State<WalletPage> {
                                                 child: Row(
                                                   children: [
                                                     //Icon(Icons.attach_money_sharp, color: Colors.blue[900], size: 40,),
+                                                    CircleAvatar(
+                                                        radius: 12,
+                                                        backgroundImage: AssetImage("assets/LTC.png")
+                                                    ),
+                                                    SizedBox(width: 10),
                                                     Text(
                                                       'LTC',
                                                       style: TextStyle(
@@ -1154,6 +1190,11 @@ class _WalletPageState extends State<WalletPage> {
                                                 child: Row(
                                                   children: [
                                                     //Icon(Icons.attach_money_sharp, color: Colors.blue[900], size: 40,),
+                                                    CircleAvatar(
+                                                        radius: 12,
+                                                        backgroundImage: AssetImage("assets/XML.png")
+                                                    ),
+                                                    SizedBox(width: 10),
                                                     Text(
                                                       'XML',
                                                       style: TextStyle(
@@ -1224,4 +1265,229 @@ class _WalletPageState extends State<WalletPage> {
   //     ),
   //   );
   // }
+
+  void withdrawalBottomSheet() {
+    var size = MediaQuery.of(context).size;
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) => Container(
+        height: 300,
+        width:
+        MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(12),
+                topLeft: Radius.circular(12))),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Padding(
+              //   padding:
+              //   const EdgeInsets.only(
+              //       top: 8, left: 180),
+              //   child: Container(
+              //     height: 5,
+              //     width: 30,
+              //     decoration: BoxDecoration(
+              //       color: Colors.blue[900],
+              //       borderRadius:
+              //       BorderRadius.only(
+              //           topLeft: Radius
+              //               .circular(12),
+              //           topRight: Radius
+              //               .circular(12),
+              //           bottomLeft: Radius
+              //               .circular(12),
+              //           bottomRight:
+              //           Radius
+              //               .circular(
+              //               12)),
+              //     ),
+              //   ),
+              // ),
+              Padding(
+                padding:
+                const EdgeInsets.only(top: 15, left: 15),
+                child: Text('Select Coin for Withdrawal',
+                    style: TextStyle(
+                        fontSize: 25,
+                        color:
+                        Colors.blue[900],
+                        fontWeight:
+                        FontWeight.bold)),
+              ),
+              SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              BtcWithdrawal()),);
+                  },
+                  child: Container(
+                    height: 30,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only()),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                            radius: 20,
+                      backgroundImage: AssetImage("assets/BTC.png")
+                        ),
+                        SizedBox(width: 10),
+                        Text('BTC', style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.blue[900],
+                        ),),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              UsdtWithdrawal()),);
+                  },
+                  child: Container(
+                    height: 30,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only()),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                            radius: 20,
+                            backgroundImage: AssetImage("assets/USDT.png")
+                        ),
+                        SizedBox(width: 10),
+                        Text('USDT', style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.blue[900],
+                        ),),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              XrpWithdrawal()),);
+                  },
+                  child: Container(
+                    height: 30,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only()),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                            radius: 20,
+                            backgroundImage: AssetImage("assets/XRP.png")
+                        ),
+                        SizedBox(width: 10),
+                        Text('XRP', style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.blue[900],
+                        ),),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              LtcWithdrawal()),);
+                  },
+                  child: Container(
+                    height: 30,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only()),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                            radius: 20,
+                            backgroundImage: AssetImage("assets/LTC.png")
+                        ),
+                        SizedBox(width: 10),
+                        Text('LTC', style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.blue[900],
+                        ),),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            XmlWithdrawal()),);
+                    },
+                  child: Container(
+                    height: 30,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only()),
+                    child: Row(
+                      children: [
+                        const CircleAvatar(
+                            radius: 20,
+                            backgroundImage: AssetImage("assets/XML.png")
+                        ),
+                        SizedBox(width: 10),
+                        Text('XML', style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.blue[900],
+                        ),),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
+
+
+

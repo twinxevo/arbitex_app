@@ -7,31 +7,28 @@ import 'dart:convert';
 
 import '../Navigation/shared_preferences.dart';
 import '../models/signup_model.dart';
-LoginBody usersFromJson(String str) => LoginBody.fromJson(json.decode(str));
 
-String usersToJson(LoginBody data) => json.encode(data.toJson());
 class LoginDataClass extends ChangeNotifier {
   bool loading = false;
   bool isBack = false;
 
   //Map<String, dynamic>? get data => null;
-  Future<void> postLoginData(LoginBody body) async {
+  Future<void> postLoginData(Data body) async {
     loading = true;
     notifyListeners();
     http.Response response = (await login(body))!;
     if (response.statusCode == 200) {
-      // var token = Model.fromJson(data).token;
-      // SharedPrefrence().setToken(token);
-       //String? accessToken = LoginBody.fromJson(data!).accessToken;
-      var accessToken = body.accessToken;
-      if (accessToken != null) {
-        SharedPrefrence().setToken(accessToken);
-      }
 
-      print('Login successful');
-      print(response.statusCode);
-      print(response.body);
+      Map<String, dynamic> map = json.decode(response.body);
+      Map<String, dynamic> data = map["body"];
+      String accessToken = data['accessToken'];
       print('token = $accessToken');
+      SharedPrefrence().setToken(accessToken);
+
+      // print('Login successful');
+      // print(response.statusCode);
+      // print(response.body);
+
       isBack = true;
 
     }else

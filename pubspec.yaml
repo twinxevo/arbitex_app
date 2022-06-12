@@ -73,6 +73,11 @@ flutter:
     - assets/Sign.jpg
     - assets/wallet.png
     - assets/otp.png
+    - assets/BTC.png
+    - assets/USDT.png
+    - assets/XRP.png
+    - assets/LTC.png
+    - assets/XML.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

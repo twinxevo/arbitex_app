@@ -1,105 +1,132 @@
-import 'package:arbitex/Pages/signup.dart';
 import 'dart:convert';
+LoginResponseModel usersFromJson(String str) => LoginResponseModel.fromJson(json.decode(str));
+String usersTojson(LoginResponseModel body) => json.encode(body.toString());
 
-LoginBody usersFromJson(String str) => LoginBody.fromJson(json.decode(str));
-
-String usersToJson(LoginBody data) => json.encode(data.toJson());
-
-class LoginBody{
-  // //String statusCode;
-  // Body body;
-  // String accessToken;
-  String email;
-  String password;
-  String? accessToken;
-
-  LoginBody({
-    // //required this.statusCode,
-    // required this.body,
-    // required this.accessToken,
-    required this.email,
-    required this.password,
-    this.accessToken,
-  });
-
-  factory LoginBody.fromJson(Map<String, dynamic> json) => LoginBody(
-      // //statusCode: json["statusCode"],
-      // body: Body.fromJson(json["body"]),
-      // accessToken: json["accessToken"],
-    email: json["email"],
-    password: json["password"],
-    accessToken: json["accesstoken"],
-  );
-
-  // Map<String, dynamic> toJson(){
-  //   final Map<String, dynamic> data = <String, dynamic>{};
-  //   //data['statusCode'] = statusCode;
-  //   data['body'] = body.toJson();
-  //   data['accessToken'] = accessToken;
-  //   return data;
-  // }
-
-  Map<String, dynamic> toJson() =>{
-    // //final Map<String, dynamic> data = <String, dynamic>{};
-    // //data['statusCode'] = statusCode;
-    // 'body': body.toJson(),
-    // 'accessToken': accessToken,
-    // //return data;
-    //final Map<String, dynamic> data = <String, dynamic>{};
-    'email': email,
-    'password': password,
-    'accessToken': accessToken,
-    //return data;
-  };
-}
-
-class Body{
-  // String email;
-  // String password;
-  //String statusCode;
-  Body body;
+class LoginResponseModel {
+  int statuscode;
+  Data data;
+  String message;
   String accessToken;
 
-  Body({
-    // required this.email,
-    // required this.password,
-    //required this.statusCode,
-    required this.body,
+  LoginResponseModel({
+    required this.statuscode,
+    required this.data,
+    required this.message,
     required this.accessToken,
   });
 
-  factory Body.fromJson(Map<String, dynamic> json) => Body(
-    // email: json["email"],
-    // password: json["password"],
-    //statusCode: json["statusCode"],
-    body: Body.fromJson(json["body"]),
-    accessToken: json["accessToken"],
+  factory LoginResponseModel.fromJson(Map<String, dynamic> json) => LoginResponseModel(
+    statuscode: json['statuscode'],
+    message: json['message'],
+    data: Data.fromJson(json['data']),
+    accessToken: json['accessToken'],
   );
 
-  // Map<String, dynamic> toJson(){
-  //   final Map<String, dynamic> data = <String, dynamic>{};
-  //   data['email'] = email;
-  //   data['password'] = password;
-  //   return data;
-  // }
-
-  // Map<String, dynamic> toJson() => {
-  //   // //final Map<String, dynamic> data = <String, dynamic>{};
-  //   // 'email': email,
-  //   // 'password': password,
-  //   // //return data;
-  //   //final Map<String, dynamic> data = <String, dynamic>{};
-  //   //data['statusCode'] = statusCode;
-  //   'body': body.toJson(),
-  //   'accessToken': accessToken,
-  //   //return data;
-  // };
-
-Map<String, dynamic> toJson(){
-  final Map<String, dynamic> data = <String, dynamic>{};
-  //data['statusCode'] = statusCode;
-  data['body'] = body.toJson();
-  data['accessToken'] = accessToken;
-  return data;
+  Map<String, dynamic> toJson() => {
+    'statusscode': statuscode,
+    'data': data.toJson(),
+    'message': message,
+    'accessToken': accessToken,
+  };
 }
+
+class Data {
+  String? userId;
+  String email;
+  String password;
+  String? fullName;
+  String? username;
+  String? role;
+  String? kycStatus;
+  DateTime? createdAt;
+  dynamic updatedAt;
+  String? status;
+  dynamic authProvider;
+  //String? accessToken;
+
+  Data({
+        this.userId,
+        required this.email,
+        required this.password,
+        this.fullName,
+        this.username,
+        this.role,
+        this.kycStatus,
+        this.createdAt,
+        this.updatedAt,
+        this.status,
+        this.authProvider,
+        //this.accessToken
+  });
+
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+    userId: json['userId'],
+    email: json['email'],
+    password: json['password'],
+    fullName: json['fullName'],
+    username: json['username'],
+    role: json['role'],
+    kycStatus: json['kycStatus'],
+    createdAt: DateTime.parse(json['createdAt']),
+    updatedAt: json['updatedAt'],
+    status: json['status'],
+    authProvider: json['authProvider'],
+    //accessToken: json['accessToken'],
+  );
+
+  Map<String, dynamic> toJson() => {
+    'userId': userId,
+    'email': email,
+    'password': password,
+    'fullName': fullName,
+    'username': username,
+    'role': role,
+    'kycStatus': kycStatus,
+    'createdAt': createdAt?.toIso8601String(),
+    'updatedAt': updatedAt,
+    'status': status,
+    'authProvider': authProvider,
+    //'accessToken': accessToken,
+  };
 }
+
+
+
+
+
+
+
+
+
+// class LoginResponseModel {
+//   final String accessToken;
+//   final String message;
+//
+//   LoginResponseModel({
+//     required this.accessToken,
+//     required this.message
+//   });
+//
+//   factory LoginResponseModel.fromJson(Map<String, dynamic> json) {
+//     return LoginResponseModel(accessToken: json['accessToken'] !=null ? json['accessToken']: "", message: json['message'] !=null ? json['message']: "");
+//   }
+// }
+//
+// class LoginRequestModel {
+//   String email;
+//   String password;
+//
+//   LoginRequestModel({
+//     required this.email,
+//     required this.password
+//   });
+//
+//   Map<String, dynamic> toJson() {
+//     Map<String, dynamic> map = {
+//       'email': email.trim(),
+//       'password': password.trim(),
+//     };
+//
+//     return map;
+//   }
+// }
